@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+   <head></head>
+  <body>
+    <form name = "calculator"> </ form>
+     <table>
+     	<tr>
+    <input name="text" type="text" id="display" disabled>
+	</tr>
+      
+	<tr>
+<!-- give all numbers same id = num    noted  -->
+<!-- give all operators id = operator  noted-->       
+    <td><input type="button" name="one" value="1" id="num"></td>
+    <td><input type="button" name="two" value="2" id="num" ></td>
+    <td><input type="button" name="three" value="3" id="num" ></td>
+  	<td><input type="button" name="plus" value="+" id="operator" ></td>
+	</tr> 
+	<tr>         
+  	<td><input type="button" name="four" value="4" id="num"></td>
+    <td><input type="button" name="five" value="5" id="num" ></td>
+    <td><input type="button" name="six" value="6" id="num" ></td>
+  	<td><input type="button" name="minus" value="-" id="operator" ></td>
+ 	</tr> 
+ 	<tr>         
+  	<td><input type="button" name="seven" value="7" id="num"></td>
+    <td><input type="button" name="eight" value="8" id="num" ></td>
+    <td><input type="button" name="nine" value="9" id="num" ></td>
+  	<td><input type="button" name="multiply" value="*" id="operator" ></td>
+ 	</tr> 
+       
+	<tr>         
+  	<td><input type="button" name="delete" value="C" id="operator"></td>
+    <td><input type="button" name="zero" value="0" id="num" ></td>
+    <td><input type="button" name="equals" value="=" id="operator" ></td>
+  	<td><input type="button" name="divide" value="/" id="operator" ></td>
+ </tr> 
+</table>
+    <script>
+     window.onload=function(){
+       
+       	function showsOutput(num) {
+        document.getElementById('display').value += num 
+      }
+      
+      var numArr = document.querySelectorAll('#num')
+      
+      for (i = 0; i<numArr.length; i++) {
+        numArr[i].addEventListener('click', function(){
+          showsOutput(this.value)
+        })
+      }
+       
+      var operatorArr = document.querySelectorAll('#operator')
+      
+      for (i = 0; i<operatorArr.length; i++) {        
+        operatorArr[i].addEventListener('click', function(){
+         operator(this.value)
+        })
+      }
+      
+       function operator(val) {
+         if (val !== 'C' && val !== '=') {
+           showsOutput(val)
+         } else if (val == '=') {
+           solve()
+         } else if (val == 'C') {
+           clearOutput()
+         }
+         else {
+         clearOutput()
+         }
+         
+       }
+       
+       function clearOutput() {
+         document.getElementById('display').value = ''
+       }
+       
+       function solve(){
+         let val = document.getElementById('display')
+         let solved = eval(val.value)
+         val.value = solved
+         
+       }
+     }
+      
+    
+      //document.getElementById("myBtn").addEventListener("click", displayDate);
+      
+      
+      //JavaScript Data Types
+      // String, Boolean, Objects, Arrays, null, undefined
+    </script>
+   </body>
+</html>
